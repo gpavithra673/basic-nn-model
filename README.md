@@ -10,7 +10,7 @@ Explain the problem statement
 
 ## Neural Network Model
 
-Include the neural network model diagram.
+![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/b6c9584b-f659-4b6e-b49f-31c990528bd3)
 
 ## DESIGN STEPS
 
@@ -44,24 +44,79 @@ Evaluate the model with the testing data.
 
 ## PROGRAM
 
-Include your code here
+```
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+from google.colab import auth
+import gspread
+from google.auth import default
+
+auth.authenticate_user()
+creds, _ = default()
+gc = gspread.authorize(creds)
+
+worksheet = gc.open('DLExp1').sheet1
+data = worksheet.get_all_values()
+df = pd.DataFrame(data[1:], columns=data[0])
+df = df.astype({'Input':'float'})
+df = df.astype({'Output':'float'})
+df.head()
+
+X = df[['Input']].values
+y = df[['Output']].values
+X
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.33,random_state = 33)
+Scaler = MinMaxScaler()
+Scaler.fit(X_train)
+X_train1 = Scaler.transform(X_train)
+X_train1
+
+ai=Sequential([
+    Dense(7,activation='relu'),
+    Dense(6,activation='relu'),
+    Dense(1)
+])
+ai.compile(optimizer='rmsprop',loss='mse')
+ai.fit(X_train1,y_train,epochs=2000)
+ai.fit(X_train1,y_train,epochs=2000)
+
+## Plot the loss
+loss_df = pd.DataFrame(ai.history.history)
+loss_df.plot()
+
+## Evaluate the model
+X_test1 = Scaler.transform(X_test)
+ai.evaluate(X_test1,y_test)
+
+# Prediction
+X_n1 = [[30]]
+X_n1_1 = Scaler.transform(X_n1)
+ai.predict(X_n1_1)
+```
 ## Dataset Information
 
-Include screenshot of the dataset
+![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/033d7773-0ce0-43bc-81e4-81c93f1536f5)
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-Include your plot here
+![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/4c14a92c-403f-4a28-90ce-1b8418f9ff8e)
+
 
 ### Test Data Root Mean Squared Error
 
-Find the test data root mean squared error
+![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/3ccef083-2deb-4ff8-880e-9cc5209bd9b1)
 
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/fe27d920-308b-43b4-989a-f456072bcbf2)
 
-## RESULT
+## RESULT:
+Thus a neural network regression model for the given dataset is written and executed successfully.
