@@ -106,17 +106,13 @@ ai.predict(X_n1_1)
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
-
-![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/4c14a92c-403f-4a28-90ce-1b8418f9ff8e)
-
+![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/ebcdc981-b3a9-473e-96ea-f5560c6e2e39)
 
 ### Test Data Root Mean Squared Error
-
-![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/3ccef083-2deb-4ff8-880e-9cc5209bd9b1)
+![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/6378a156-72ac-4879-a671-1af42e757228)
 
 ### New Sample Data Prediction
-
-![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/fe27d920-308b-43b4-989a-f456072bcbf2)
+![image](https://github.com/gpavithra673/basic-nn-model/assets/93427264/0786baab-9f17-4bf5-9d58-dfcb2d3f50a9)
 
 ## RESULT:
 Thus a neural network regression model for the given dataset is written and executed successfully.
